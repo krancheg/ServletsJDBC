@@ -1,3 +1,7 @@
-/Users/android/Documents/Java/JettyTestService/src/main/java/main/Main.java
-/Users/android/Documents/Java/JettyTestService/src/main/java/templater/PageGenerator.java
-/Users/android/Documents/Java/JettyTestService/src/main/java/servlets/AllRequestsServlet.java
+/Users/android/Documents/Java/stepic_java_webserver-master/L2.1 Authorization/src/main/java/accounts/AccountService.java
+/Users/android/Documents/Java/stepic_java_webserver-master/L2.1 Authorization/src/main/java/accounts/UserProfile.java
+/Users/android/Documents/Java/stepic_java_webserver-master/L2.1 Authorization/src/main/java/servlets/UsersServlet.java
+/Users/android/Documents/Java/stepic_java_webserver-master/L2.1 Authorization/src/main/java/servlets/SignInServlet.java
+/Users/android/Documents/Java/stepic_java_webserver-master/L2.1 Authorization/src/main/java/servlets/SessionsServlet.java
+/Users/android/Documents/Java/stepic_java_webserver-master/L2.1 Authorization/src/main/java/main/Main.java
+/Users/android/Documents/Java/stepic_java_webserver-master/L2.1 Authorization/src/main/java/servlets/SignUpServlet.java
