@@ -1,5 +1,6 @@
 package main;
 
+import DBService.DBSevice;
 import accounts.AccountService;
 import accounts.UserProfile;
 import org.eclipse.jetty.server.Handler;
@@ -17,8 +18,14 @@ import javax.servlet.Servlet;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        AccountService accountService = new AccountService();
 
+        /*
+        AccountService accountService = new AccountService();
+        accountService.addNewUser(new UserProfile("admin"));
+        accountService.addNewUser(new UserProfile("test"));
+        */
+
+        DBSevice accountService = new DBSevice();
         accountService.addNewUser(new UserProfile("admin"));
         accountService.addNewUser(new UserProfile("test"));
 

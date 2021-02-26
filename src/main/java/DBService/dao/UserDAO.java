@@ -29,7 +29,7 @@ public class UserDAO implements Account {
         String query = String.format("select * from users where login=%s",login);
         return executor.executeQuery(query,resultSet -> {
             resultSet.next();
-            return new UserProfile(resultSet.getLong("id"),resultSet.getString("login"),
+            return new UserProfile(resultSet.getString("login"),
                     resultSet.getString("pass"), resultSet.getString("email"));
         });
     }
@@ -40,7 +40,7 @@ public class UserDAO implements Account {
                 "on sessions.user_id = users.id where sessions.id=%d",sessionId);
         return executor.executeQuery(query,resultSet -> {
             resultSet.next();
-            return new UserProfile(resultSet.getLong("id"),resultSet.getString("login"),
+            return new UserProfile(resultSet.getString("login"),
                     resultSet.getString("pass"), resultSet.getString("email"));
         });
     }

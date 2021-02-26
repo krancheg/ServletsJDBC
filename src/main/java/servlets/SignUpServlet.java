@@ -1,5 +1,6 @@
 package servlets;
 
+import DBService.DBSevice;
 import accounts.AccountService;
 import accounts.UserProfile;
 
@@ -11,9 +12,15 @@ import java.io.IOException;
 
 public class SignUpServlet extends HttpServlet {
 
-    private final AccountService accountService;
+//    private final AccountService accountService;
+//
+//    public SignUpServlet(AccountService accountService) {
+//        this.accountService = accountService;
+//    }
 
-    public SignUpServlet(AccountService accountService) {
+    private final DBSevice accountService;
+
+    public SignUpServlet(DBSevice accountService) {
         this.accountService = accountService;
     }
 

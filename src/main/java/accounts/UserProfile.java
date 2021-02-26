@@ -13,8 +13,8 @@ public class UserProfile {
     private final String pass;
     private final String email;
 
-    public UserProfile(long id, String login, String pass, String email) {
-        this.id = id;
+    public UserProfile(String login, String pass, String email) {
+        this.id = 0;
         this.login = login;
         this.pass = pass;
         this.email = email;

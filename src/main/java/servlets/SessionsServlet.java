@@ -1,5 +1,6 @@
 package servlets;
 
+import DBService.DBSevice;
 import accounts.AccountService;
 import accounts.UserProfile;
 import com.google.gson.Gson;
@@ -11,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class SessionsServlet extends HttpServlet {
-    private final AccountService accountService;
+    private final DBSevice accountService;
 
-    public SessionsServlet(AccountService accountService) {
+    public SessionsServlet(DBSevice accountService) {
         this.accountService = accountService;
     }
 
