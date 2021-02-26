@@ -1,7 +1,0 @@
-servlets/SignUpServlet.class
-servlets/UsersServlet.class
-accounts/UserProfile.class
-servlets/SessionsServlet.class
-accounts/AccountService.class
-servlets/SignInServlet.class
-main/Main.class
