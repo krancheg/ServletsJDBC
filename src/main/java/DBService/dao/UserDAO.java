@@ -1,13 +1,13 @@
 package DBService.dao;
 
 import DBService.executor.Executor;
-import accounts.Account;
+import accounts.User;
 import accounts.UserProfile;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class UserDAO implements Account {
+public class UserDAO implements User {
 
     private Executor executor;
 
@@ -46,28 +46,11 @@ public class UserDAO implements Account {
         });
     }
 
-    @Override
-    public void addSession(String sessionId, UserProfile userProfile) throws SQLException {
-        Long id = getIdByLogin(userProfile.getLogin());
-        if (id == -1) {
-            addNewUser(userProfile);
-            id = getIdByLogin(userProfile.getLogin());
-        }
-        String query = String.format("insert into sessions (user_id) values (%d)",id);
-        executor.execUpdate(query);
-    }
-
-    @Override
-    public void deleteSession(String sessionId) throws SQLException {
-        String query = String.format("delete from sessions where id=%d",sessionId);
-        executor.execUpdate(query);
-    }
-
     /*
     Return id of user by login,
     if id of user not found, return -1
      */
-    private Long getIdByLogin(String login) throws SQLException {
+    protected Long getIdByLogin(String login) throws SQLException {
         String query = String.format("select * from users where login='%s'",login);
         return (Long) executor.executeQuery(query, resultSet -> {
             if (resultSet.next()) {

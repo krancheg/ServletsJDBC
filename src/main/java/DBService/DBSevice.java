@@ -1,8 +1,10 @@
 package DBService;
 
 
+import DBService.dao.SessionDAO;
 import DBService.dao.UserDAO;
-import accounts.Account;
+import accounts.Session;
+import accounts.User;
 import accounts.UserProfile;
 import org.h2.jdbcx.JdbcDataSource;
 
@@ -10,7 +12,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DBSevice implements Account {
+public class DBSevice implements User, Session {
     private final Connection connection;
 
     public DBSevice() {
@@ -58,7 +60,7 @@ public class DBSevice implements Account {
     @Override
     public void addSession(String sessionId, UserProfile userProfile) {
         try {
-            new UserDAO(connection).addSession(sessionId,userProfile);
+            new SessionDAO(connection).addSession(sessionId,userProfile);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -67,7 +69,7 @@ public class DBSevice implements Account {
     @Override
     public void deleteSession(String sessionId) {
         try {
-            new UserDAO(connection).deleteSession(sessionId);
+            new SessionDAO(connection).deleteSession(sessionId);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

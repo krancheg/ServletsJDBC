@@ -3,7 +3,7 @@ package accounts;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AccountService implements Account {
+public class AccountService implements User, Session {
     private final Map<String, UserProfile> loginToProfile;
     private final Map<String, UserProfile> sessionIdToProfile;
 
