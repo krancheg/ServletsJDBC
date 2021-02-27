@@ -2,6 +2,7 @@ package DBService;
 
 
 import DBService.dao.SessionDAO;
+import DBService.dao.TablesDAO;
 import DBService.dao.UserDAO;
 import accounts.Session;
 import accounts.User;
@@ -22,8 +23,8 @@ public class DBSevice implements User, Session {
     public void addNewUser(UserProfile userProfile) {
         try {
             connection.setAutoCommit(false);
+            new TablesDAO(connection).createTables();
             UserDAO userDAO = new UserDAO(this.connection);
-            userDAO.createTables();
             userDAO.addNewUser(userProfile);
             connection.commit();
         } catch (SQLException throwables) {
@@ -77,7 +78,7 @@ public class DBSevice implements User, Session {
 
     public void cleanAllTables() {
         try {
-            new UserDAO(connection).dropTables();
+            new TablesDAO(connection).dropTables();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
