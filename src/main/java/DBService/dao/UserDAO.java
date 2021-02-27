@@ -26,11 +26,12 @@ public class UserDAO implements Account {
 
     @Override
     public UserProfile getUserByLogin(String login) throws SQLException {
-        String query = String.format("select * from users where login=%s",login);
+        String query = String.format("select * from users where login='%s'",login);
         return executor.executeQuery(query,resultSet -> {
-            resultSet.next();
-            return new UserProfile(resultSet.getString("login"),
-                    resultSet.getString("pass"), resultSet.getString("email"));
+            if (resultSet.next()) {
+                return new UserProfile(resultSet.getString("login"),
+                        resultSet.getString("pass"), resultSet.getString("email"));
+            } else return null;
         });
     }
 
@@ -67,7 +68,7 @@ public class UserDAO implements Account {
     if id of user not found, return -1
      */
     private Long getIdByLogin(String login) throws SQLException {
-        String query = String.format("select * from users where login=%s",login);
+        String query = String.format("select * from users where login='%s'",login);
         return (Long) executor.executeQuery(query, resultSet -> {
             if (resultSet.next()) {
                 resultSet.next();
@@ -78,8 +79,8 @@ public class UserDAO implements Account {
 
     public void createTables() throws SQLException {
         executor.execUpdate("create table if not exists users (id bigint auto_increment, " +
-                "login varchar(256), pass varchar(256), email varchar(256)");
-        executor.execUpdate("create table if not exists sessions (id bigint auto_increment, user_id bigint)");
+                "login varchar(256), pass varchar(256), email varchar(256), primary key (id))");
+        executor.execUpdate("create table if not exists sessions (id bigint auto_increment, user_id bigint, primary key (id))");
     }
 
     public void dropTables() throws SQLException {

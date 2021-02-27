@@ -14,7 +14,6 @@ import servlets.UsersServlet;
 import servlets.SignInServlet;
 import servlets.SignUpServlet;
 
-import javax.servlet.Servlet;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -26,6 +25,7 @@ public class Main {
         */
 
         DBSevice accountService = new DBSevice();
+        accountService.cleanAllTables();
         accountService.addNewUser(new UserProfile("admin"));
         accountService.addNewUser(new UserProfile("test"));
 

@@ -73,6 +73,14 @@ public class DBSevice implements Account {
         }
     }
 
+    public void cleanAllTables() {
+        try {
+            new UserDAO(connection).dropTables();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
 
     private Connection H2Connection() {
         try {
